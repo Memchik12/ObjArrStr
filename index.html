@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script id="01">
+        function getCharsWthString(str)
+        {
+            let chars = 0;
+            for (let char of str) {
+                if (/[a-zA-Zа-яА-ЯіІїЇєЄґҐ]/.test(char)) {
+                    chars++;
+                }
+            }
+            console.log("Літери:", chars);
+        }
+
+        function getNumWthString(str)
+        {
+            let number = 0;
+            for (let char of str) {
+                if (/[0-9]/.test(char)) {
+                    number++;
+                }
+            }
+            console.log("Цифри:", number);
+        }
+        function getOtherCharsWthString(str)
+        {
+            let others = 0;
+            for (let char of str) {
+                if (!/[a-zA-Zа-яА-ЯіІїЇєЄґҐ]/.test(char) && !/[0-9]/.test(char)) {
+                    others++;
+                }
+            }
+            console.log("Інші символи:", others);
+        }
+
+        function stringStats(str) {
+
+            console.log(`Рядок: "${str}"`);
+            getCharsWthString(str)
+            getNumWthString(str)
+            getOtherCharsWthString(str)
+        }
+        //stringStats("Привіт 123! :)");
+
+    </script>
+    <script id="02">
+        function numberToWords(num) {
+            if (num < 10 || num > 99) return "Число не є двозначним";
+
+            const from10to19 = [
+                "десять", "одинадцять", "дванадцять", "тринадцять", "чотирнадцять",
+                "п’ятнадцять", "шістнадцять", "сімнадцять", "вісімнадцять", "дев’ятнадцять"
+            ];
+
+            const tens = [
+                "", "", "двадцять", "тридцять", "сорок",
+                "п’ятдесят", "шістдесят", "сімдесят", "вісімдесят", "дев’яносто"
+            ];
+
+            const ones = [
+                "", "один", "два", "три", "чотири",
+                "п’ять", "шість", "сім", "вісім", "дев’ять"
+            ];
+
+            if (num >= 10 && num <= 19) {
+                return from10to19[num - 10];
+            }
+
+            let tensPart = Math.floor(num / 10);
+            let onesPart = num % 10;
+
+            return tens[tensPart] + (onesPart !== 0 ? " " + ones[onesPart] : "");
+        }
+        function printNumberToWords(num)
+        {
+            let str = numberToWords(num);
+            console.log(str);
+        }
+        printNumberToWords(12)
+    </script>
+</body>
+</html>

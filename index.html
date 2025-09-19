@@ -115,27 +115,7 @@
             }
             return result;
         }
-        function swapCaseAndDigits(str) {
-            let result = "";
 
-            for (let char of str) {
-                if (/[a-zа-яієїґ]/.test(char)) {
-                    // маленька літера → велика
-                    result += char.toUpperCase();
-                } else if (/[A-ZА-ЯІЄЇҐ]/.test(char)) {
-                    // велика літера → маленька
-                    result += char.toLowerCase();
-                } else if (/[0-9]/.test(char)) {
-                    // цифра → "_"
-                    result += "_";
-                } else {
-                    // інші символи залишаємо як є
-                    result += char;
-                }
-            }
-
-            return result;
-        }
         function printSwapToWords(str)
         {
             str = swapChars(str)

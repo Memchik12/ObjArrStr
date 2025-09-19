@@ -124,5 +124,105 @@
 
         }
     </script>
+
+    <script id="04">
+        function toCamelCase(cssProp) {
+            return cssProp.replace(/-([a-z])/g, (match, letter) => letter.toUpperCase());
+        }
+        //console.log(toCamelCase("font-size"));
+    </script>
+
+<script id="05">
+    function toAbbreviation(phrase) {
+        return phrase
+            .split(/\s+/)
+            .map(word => word[0])
+            .join("")
+            .toUpperCase();
+    }
+    //console.log(toAbbreviation("cascading style sheets"));
+</script>
+<script id="06">
+    function concatStrings(...strings) {
+        return strings.join("");
+    }
+    //console.log(concatStrings("Привіт", " ", "світ", "!"));
+</script>
+<script id="07">
+
+    function calculator(expression) {
+        expression = expression.trim();
+
+        let match = expression.match(/(\d+)\s*([\+\-\*\/])\s*(\d+)/);
+
+        if (!match) return "Некоректний вираз";
+
+        let a = Number(match[1]);
+        let op = match[2];
+        let b = Number(match[3]);
+
+        switch (op) {
+            case "+": return a + b;
+            case "-": return a - b;
+            case "*": return a * b;
+            case "/": return b !== 0 ? a / b : "Помилка: ділення на нуль";
+            default: return "Невідомий оператор";
+        }
+    }
+    function printCalculator(expression) {
+        console.log(calculator(expression));
+    }
+    //printCalculator("2+2")
+
+</script>
+
+<script id="08">
+    function parseUrl(url) {
+        try {
+            let parsed = new URL(url);
+            console.log(`Протокол: ${parsed.protocol.replace(":", "")}`);
+            console.log(`Домен: ${parsed.hostname}`);
+            console.log(`Шлях: ${parsed.pathname}`);
+        } catch (e) {
+            console.log("Некоректний URL");
+        }
+    }
+    //parseUrl("https://itstep.org/ua/about")
+</script>
+<script id="09">
+    function customSplit(str, delimiter) {
+        let result = [];
+        let temp = "";
+
+        for (let i = 0; i < str.length; i++) {
+            if (str[i] === delimiter) {
+                result.push(temp);
+                temp = "";
+            } else {
+                temp += str[i];
+            }
+        }
+
+
+        if (temp !== "") {
+            result.push(temp);
+        }
+
+        return result;
+    }
+    //console.log(customSplit('10/08/2020', '/'))
+
+</script>
+<script id="10">
+    function print(template, ...values) {
+        return template.replace(/%(\d+)/g, (match, index) => {
+            return values[index - 1] !== undefined ? values[index - 1] : match;
+        });
+    }
+
+    //console.log(print("Today is %1 %2.%3.%4", "Monday", 10, 8, 2020));
+</script>
+
+
 </body>
 </html>

@@ -81,7 +81,68 @@
             let str = numberToWords(num);
             console.log(str);
         }
-        printNumberToWords(12)
+        //printNumberToWords(12)
+    </script>
+
+    <script id="03">
+        function swapChars(str)
+        {
+            let result = "";
+            let newString = str.toString();
+            for (let char of newString) {
+                if (/[a-zа-яієїґ]/.test(char)) {
+                    result += char.toUpperCase();
+                } else if (/[A-ZА-ЯІЄЇҐ]/.test(char)) {
+                    result += char.toLowerCase();
+                }
+                else {
+                    result += char;
+                }
+            }
+            return result;
+        }
+        function deleteNumbers(str)
+        {
+            let result = "";
+            let newString = str.toString();
+            for (let char of newString) {
+                if (/[0-9]/.test(char)) {
+                    result += "_";
+                } else {
+
+                    result += char;
+                }
+            }
+            return result;
+        }
+        function swapCaseAndDigits(str) {
+            let result = "";
+
+            for (let char of str) {
+                if (/[a-zа-яієїґ]/.test(char)) {
+                    // маленька літера → велика
+                    result += char.toUpperCase();
+                } else if (/[A-ZА-ЯІЄЇҐ]/.test(char)) {
+                    // велика літера → маленька
+                    result += char.toLowerCase();
+                } else if (/[0-9]/.test(char)) {
+                    // цифра → "_"
+                    result += "_";
+                } else {
+                    // інші символи залишаємо як є
+                    result += char;
+                }
+            }
+
+            return result;
+        }
+        function printSwapToWords(str)
+        {
+            str = swapChars(str)
+            str = deleteNumbers(str)
+            console.log(str)
+
+        }
     </script>
 </body>
 </html>
